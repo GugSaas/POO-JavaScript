@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+</head>
+<body>
+    <script>
+        class Pessoa{
+            constructor(nome, data_nascimento, cpf, rg=undefined){
+                this.nome = nome;
+                this.data_nascimento = data_nascimento;
+                this.cpf = cpf;
+                this.rg = rg;
+            }
+
+            getName(){
+                return this.nome;
+            }
+
+            setName(nome){
+                this.nome = nome;
+            }
+
+            getData_Nascimento(){
+                return this.data_nascimento;
+            }
+
+            setData_Nascimento(data){
+                this.data_nascimento = data;
+            }
+        }
+
+        class Aluno extends Pessoa{
+            constructor(nome, data_nascimento, cpf, rg=undefined){
+                super(nome, data_nascimento, cpf, rg);
+                this.notas = [];
+            }
+
+            estudar(){
+                return 'O Aluno está estudando';
+            }
+        }
+
+        class Professor extends Pessoa{
+            constructor(nome, data_nascimento, cpf, rg){
+                super(nome, data_nascimento, cpf, rg);
+                this.disciplinas = [];
+            }
+
+            lecionar(){
+                console.log(this.nome, 'está lecionando')
+            }
+        }
+
+        var opcao = prompt('Você vai cadastrar um professor ou um aluno? 2/1');
+        opcao = parseInt(opcao);
+
+        while(opcao != 1 && opcao != 2){
+            alert('Opção errada')
+            opcao = prompt('Escolha professor (2) ou aluno (1)')
+        }
+
+        if(opcao == 1){
+            var aluno1_nome = prompt('Digite o nome do aluno');
+            var aluno1_idade = prompt('Digite a data de nascimento do aluno');
+            var aluno1_cpf = prompt('Digite o cpf do aluno');
+            var aluno1_rg = prompt('Digite o rg do aluno (opcional)');
+            aluno1 = new Aluno(aluno1_nome, aluno1_idade, aluno1_cpf, aluno1_rg);
+            console.log(aluno1.estudar());
+        }else{
+            var professor1_nome = prompt('Digite o nome do professor');
+            var professor1_idade = prompt('Digite a data de nascimento do professor');
+            var professor1_cpf = prompt('Digite o cpf do professor');
+            var professor1_rg = prompt('Digite o rg do professor');
+
+            professor1 = new Professor(professor1_nome, professor1_idade, professor1_cpf, professor1_rg);
+            console.log(professor1.lecionar());
+            console.log(professor1.getName())
+        }
+
+    </script>
+</body>
+</html>
