@@ -75,8 +75,16 @@
             }
 
             calculadora(n1, n2, operacao){
-                if(operacao != '+' || operacao != '-' || operacao != '/' || operacao != '*'){
-
+                var n1 = parseInt(n1);
+                var n2 = parseInt(n2);
+                if(operacao == '+'){
+                    return n1 + n2;
+                }else if(operacao == '-'){
+                    return n1 - n2;
+                }else if(operacao == '/'){
+                    return n1 / n2;
+                }else{
+                    return n1 * n2;
                 }
             }
         }
@@ -85,8 +93,8 @@
         opcao = parseInt(opcao);
 
         while(opcao != 1 && opcao != 2){
-            alert('Opção errada')
-            opcao = prompt('Escolha professor (2) ou aluno (1)')
+            alert('Opção errada');
+            opcao = prompt('Escolha professor (2) ou aluno (1)');
         }
 
         if(opcao == 1){
@@ -97,18 +105,18 @@
 
             aluno1 = new Aluno(aluno1_nome, aluno1_idade, aluno1_cpf, aluno1_rg);
 
-            var alterar = prompt('Deseja alterar alguma informação?')
+            var alterar = prompt('Deseja alterar alguma informação?');
 
             if(alterar == 'sim' || alterar == 's'){
                 var informacao = prompt('Desejar alterar o nome, idade, cpf ou rg?')
                 while(informacao != 'nome' && informacao && 'idade' && informacao != 'cpf' && informacao != 'rg'){
-                    alert('Opção errada!')
-                    informacao = prompt('Deseja alterar o nome, idade, cpf ou rg?')
+                    alert('Opção errada!');
+                    informacao = prompt('Deseja alterar o nome, idade, cpf ou rg?');
                 }
                 if(informacao == 'nome'){
-                    var novo_nome = prompt('Digite o novo nome')
-                    aluno1.setName(novo_nome)
-                    console.log('Nome alterado com sucesso para:', aluno1.nome)
+                    var novo_nome = prompt('Digite o novo nome');
+                    aluno1.setName(novo_nome);
+                    console.log('Nome alterado com sucesso para:', aluno1.nome);
                 }
             }
             
@@ -120,20 +128,33 @@
 
             professor1 = new Professor(professor1_nome, professor1_idade, professor1_cpf, professor1_rg);
 
-            var calcular = prompt('Deseja calcular algo agora? S/N')
-            while(calcular != 'S' || calcular != 'N'){
-                alert('Opção errada!')
-                calcular = prompt('Digite novamente a opção')
+            var calcular = prompt('Deseja calcular algo agora? S/N');
+            while(calcular != 'S' && calcular != 'N'){
+                alert('Opção errada!');
+                calcular = prompt('Digite novamente a opção');
             }
             if(calcular == 'S'){
-                var n1 = prompt('Digite o primeiro número')
-                var n2 = prompt('Digite o segundo número')
+                var n1 = prompt('Digite o primeiro número');
+                var n2 = prompt('Digite o segundo número');
                 var operacao = prompt('Digite a operação +, -, /, *')
                 while(operacao != '+' || operacao != '-' || operacao != '/' || operacao != '*'){
-                    alert('Opção errada!')
-                    operacao = prompt('Digite a operação +, -, /, *')
+                    alert('Opção errada!');
+                    operacao = prompt('Digite a operação +, -, /, *');
                 }
-                professor1.calculadora(n1, n2, operacao)
+                alert(professor1.calculadora(n1, n2, operacao));
+            }else{
+                alert('Ok');
+            }
+
+            var trabalhar = prompt('Você irá trabalhar agora? S/N');
+            while(trabalhar != 'S' && trabalhar != 'N'){
+                alert('Opção errada!');
+                trabalhar = prompt('Digite novamente a opção');
+            }
+            if(trabalhar == 'S'){
+                alert(professor1.lecionar())
+            }else{
+                alert('Professor em repouso')
             }
         }
 
