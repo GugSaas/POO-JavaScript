@@ -71,7 +71,7 @@
             }
 
             lecionar(){
-                console.log(this.nome, 'está lecionando');
+                return this.nome + ' está lecionando';
             }
 
             calculadora(n1, n2, operacao){
@@ -116,8 +116,44 @@
                 if(informacao == 'nome'){
                     var novo_nome = prompt('Digite o novo nome');
                     aluno1.setName(novo_nome);
-                    console.log('Nome alterado com sucesso para:', aluno1.nome);
+                    alert('Nome alterado com sucesso para: ' + aluno1.nome);
+                }else if(informacao == 'idade'){
+                    var nova_idade  = prompt('Digite seu ano de nascimento, somente números!');
+                    aluno1.setData_Nascimento(nova_idade);
+                    alert('Data de nascimento alterada para: ' + aluno1.getData_Nascimento());
+                }else if(informacao == ' cpf'){
+                    var novo_cpf = prompt('Digite seu novo CPF, somente números!');
+                    aluno1.setCpf(novo_cpf);
+                    alert('CPF alterado com sucesso para: ' + aluno1.getCpf());
+                }else{
+                    var novo_rg = prompt('Digite seu novo rg, somente número!');
+                    aluno1.setCpf(novo_rg);
+                    alert('RG alterado com sucesso para: ' + aluno1.getRg());
                 }
+            }
+            var estudar = prompt('Você irá estudar agora? S/N');
+            while(estudar != 'S' && estudar != 'N' && estudar != 's' && estudar != 'n'){
+                alert('Opção errada!');
+                estudar = prompt('Digite novamente a opção');
+            }
+            if(estudar == 'S' || estudar == 's'){
+                alert(aluno1.estudar());
+            }
+
+            var calculo_media = prompt('Gostaria de calcular sua média? S/N')
+            while(calculo_media != 'S' && calculo_media != 'N' && calculo_media != 's' && calculo_media != 'n'){
+                alert('Opção errada!');
+                calculo_media = prompt('Digite novamente a opção');
+            }
+            if(calculo_media == 'S' || calculo_media == 's'){
+                var nota1 = prompt('Digite sua primeira nota');
+                var nota2 = prompt('Digite sua segunda nota');
+
+                var nota1 = parseInt(nota1);
+                var nota2 = parseInt(nota2);
+                alert(aluno1.calcular_media(nota1, nota2));
+            }else if(calculo_media == 'N' || calculo_media == 'n'){
+                window.alert('Programa encerrando...');
             }
             
         }else{
@@ -128,16 +164,43 @@
 
             professor1 = new Professor(professor1_nome, professor1_idade, professor1_cpf, professor1_rg);
 
+            var alterar = prompt('Deseja alterar alguma informação?');
+
+            if(alterar == 'sim' || alterar == 's'){
+                var informacao = prompt('Desejar alterar o nome, idade, cpf ou rg?')
+                while(informacao != 'nome' && informacao && 'idade' && informacao != 'cpf' && informacao != 'rg'){
+                    alert('Opção errada!');
+                    informacao = prompt('Deseja alterar o nome, idade, cpf ou rg?');
+                }
+                if(informacao == 'nome'){
+                    var novo_nome = prompt('Digite o novo nome');
+                    professor1.setName(novo_nome);
+                    alert('Nome alterado com sucesso para: ' + professor1.nome);
+                }else if(informacao == 'idade'){
+                    var nova_idade  = prompt('Digite seu ano de nascimento, somente números!');
+                    professor1.setData_Nascimento(nova_idade);
+                    alert('Data de nascimento alterada para: ' + professor1.getData_Nascimento());
+                }else if(informacao == ' cpf'){
+                    var novo_cpf = prompt('Digite seu novo CPF, somente números!');
+                    professor1.setCpf(novo_cpf);
+                    alert('CPF alterado com sucesso para: ' + professor1.getCpf());
+                }else{
+                    var novo_rg = prompt('Digite seu novo rg, somente número!');
+                    professor1.setCpf(novo_rg);
+                    alert('RG alterado com sucesso para: ' + professor1.getRg());
+                }
+            }
+
             var calcular = prompt('Deseja calcular algo agora? S/N');
-            while(calcular != 'S' && calcular != 'N'){
+            while(calcular != 'S' && calcular != 'N' && calcular != 's' && calcular != 'n'){
                 alert('Opção errada!');
                 calcular = prompt('Digite novamente a opção');
             }
-            if(calcular == 'S'){
+            if(calcular == 'S' || calcular == 's'){
                 var n1 = prompt('Digite o primeiro número');
                 var n2 = prompt('Digite o segundo número');
                 var operacao = prompt('Digite a operação +, -, /, *')
-                while(operacao != '+' || operacao != '-' || operacao != '/' || operacao != '*'){
+                while(operacao != '+' && operacao != '-' && operacao != '/' && operacao != '*'){
                     alert('Opção errada!');
                     operacao = prompt('Digite a operação +, -, /, *');
                 }
@@ -147,16 +210,16 @@
             }
 
             var trabalhar = prompt('Você irá trabalhar agora? S/N');
-            while(trabalhar != 'S' && trabalhar != 'N'){
+            while(trabalhar != 'S' && trabalhar != 'N' && trabalhar != 's' && trabalhar != 'n'){
                 alert('Opção errada!');
                 trabalhar = prompt('Digite novamente a opção');
             }
-            if(trabalhar == 'S'){
+            if(trabalhar == 'S' || trabalhar == 's'){
                 alert(professor1.lecionar())
             }else{
                 alert('Professor em repouso')
             }
-        }
+            }
 
     </script>
 </body>
